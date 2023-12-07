@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=1, minimum-scale=.25, user-scalable=yes" />
     <title>Sudoku</title>
-    <link type="text/css" rel="stylesheet" href="style.css?v=0.10" />
+    <link type="text/css" rel="stylesheet" href="style.css?v=0.1" />
   </head>
   <body class="solved">
     <!-- --------------- -->
-    <div id="title">Sudoku</div>
+    <div id="title">
+      <span>Sudoku</span>
+      <span id="title-back">Sudoku</span>
+    </div>
     <!-- --------------- -->
     <!-- STATS           -->
     <!-- --------------- -->
@@ -60,7 +63,7 @@
     </div>
     <!-- --------------- -->
     <script type="module">
-      import { init } from './game.js?v=0.10';
+      import { init } from './game.js?v=0.1';
       // Wait for the page to load and then initialize the game
       (() => init())();
     </script>

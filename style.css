@@ -4,8 +4,10 @@
   --border-color: #757575;
   --border-color-light: #c9c9c9;
   --board-backgound-color: #fff;
-  --cell-selected-background-color: #e9e9e9;
+  --cell-selected-background-color: #dddddd;
+  --cell-base-background-color: #f6f6f6;
   --title-color: #2196f3;
+  --title-back-color: #f7f7f7;
   --title-shadow-color: #0000001c;
   --button-color: white;
   --button-border-color: #1d83d6;
@@ -59,9 +61,22 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: var(--font-title-values-size);
   font-weight: 900;
-  margin-top: .25rem;
+  margin-top: 1.5rem;
   margin-bottom: .75rem;
   font-stretch: ultra-expanded;
+  position: relative;
+}
+#title-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  font-size: 7rem;
+  margin-left: -90px;
+  margin-top: -36px;
+  z-index: -1;
+  color: var(--title-back-color);
 }
 /* solved message */
 #solved {
@@ -89,7 +104,7 @@ body {
 #stats {
   font-family: 'Courier New', Courier, monospace;
   justify-content: space-between;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
   background-color: var(--stats-background-color);
   padding: 0.25em;
   border-radius: 4px;
@@ -105,7 +120,9 @@ body {
   font-weight: bold;
 }
 #stats div span:last-child {
+  opacity: 0.8;
   font-size: var(--font-stats-values-size);
+  font-weight: bold;
 }
 /* board */
 #board {
@@ -137,6 +154,7 @@ body {
 }
 #board .row .square .cell.base {
   font-weight: bold;
+  background-color: var(--cell-base-background-color);
 }
 #board .row .square .cell.error {
   color: var(--color-error);
@@ -145,9 +163,13 @@ body {
   background-color: var(--cell-selected-background-color);
 }
 /* number selector */
+#number-selector {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+}
 #number-selector .button-number {
   height: 3rem;
-  margin-top: 1rem;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -170,6 +192,7 @@ body {
 #buttons {
   justify-content: space-between;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 .button {
   font-family: Arial, Helvetica, sans-serif;
