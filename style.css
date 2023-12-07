@@ -19,6 +19,7 @@
   --stats-background-color: #e3e3e3;
   --max-pixels: 640px;
   --font-number-size: 1.75rem; 
+  --font-number-selector-size: 2rem; 
   --font-stats-size: 1.50rem;
   --font-stats-values-size: 1.3rem;
   --font-title-values-size: 4rem;
@@ -164,34 +165,49 @@ body {
 }
 /* number selector */
 #number-selector {
-  margin-top: 1rem;
-  display: flex;
+  margin-top: 2rem;
+  display: grid;
   flex-direction: row;
+  grid-template-columns: repeat(5, 1fr);
+  /* row-gap: 0.5rem; */
 }
 #number-selector .button-number {
-  height: 3rem;
+  height: 4rem;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid var(--border-color);
   border-right: none;
+  border-bottom: none;
   cursor: pointer;
-  font-size: var(--font-number-size);
+  font-size: var(--font-number-selector-size);
 }
 #number-selector .button-number:first-child {
   border-top-left-radius: .5rem;
-  border-bottom-left-radius: .5rem;
+}
+#number-selector .button-number:nth-child(5) {
+  border-right: 1px solid var(--border-color);
+  border-top-right-radius: .5rem;
 }
 #number-selector .button-number:last-child {
   border-right: 1px solid var(--border-color);
-  border-top-right-radius: .5rem;
   border-bottom-right-radius: .5rem;
+}
+#number-selector .button-number:nth-child(6) {
+  border-bottom-left-radius: .5rem;
+}
+#number-selector .button-number:nth-child(6),
+#number-selector .button-number:nth-child(7),
+#number-selector .button-number:nth-child(8),
+#number-selector .button-number:nth-child(9),
+#number-selector .button-number:nth-child(10) {
+  border-bottom: 1px solid var(--border-color);
 }
 /* button */
 #buttons {
   justify-content: space-between;
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 .button {
