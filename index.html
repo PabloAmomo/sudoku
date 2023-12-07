@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=1, minimum-scale=.25, user-scalable=yes" />
+    <title>Sudoku</title>
+    <link type="text/css" rel="stylesheet" href="style.css?v=0.10" />
+  </head>
+  <body class="solved">
+    <!-- --------------- -->
+    <div id="title">Sudoku</div>
+    <!-- --------------- -->
+    <!-- STATS           -->
+    <!-- --------------- -->
+    <div id="stats">
+      <div>
+        <span>Time</span>
+        <span id="time">&nbsp;</span>
+      </div>
+      <div>
+        <span>Moves</span>
+        <span id="moves">&nbsp;</span>
+      </div>
+      <div>
+        <span>level</span>
+        <span id="level">&nbsp;</span>
+      </div>
+      <div>
+        <span>Errors</span>
+        <span id="errors">&nbsp;</span>
+      </div>
+    </div>
+    <!-- --------------- -->
+    <!-- BOARD           -->
+    <!-- --------------- -->
+    <div id="board">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <!-- ------------- -->
+      <!-- SOLVED        -->
+      <!-- ------------- -->
+      <div id="solved">
+        <div>
+          <span>Solved !</span>
+          <span>👏👏👏</span>
+        </div>
+      </div>
+    </div>
+    <!-- --------------- -->
+    <!-- NUMBERS         -->
+    <!-- --------------- -->
+    <div id="number-selector"></div>
+    <!-- --------------- -->
+    <!-- BUTTONS         -->
+    <!-- --------------- -->
+    <div id="buttons">
+      <div class="button" id="new-game">New Game</div>
+      <div class="button" id="solve">Solve</div>
+    </div>
+    <!-- --------------- -->
+    <script type="module">
+      import { init } from './game.js?v=0.10';
+      // Wait for the page to load and then initialize the game
+      (() => init())();
+    </script>
+  </body>
+</html>
