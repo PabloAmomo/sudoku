@@ -1,5 +1,5 @@
 :root {
-  --color: #00000090;
+  --color: #000000dd;
   --color-error: #ff0000b0;
   --border-color: #757575;
   --border-color-light: #c9c9c9;
@@ -7,7 +7,7 @@
   --cell-selected-background-color: #dddddd;
   --cell-base-background-color: #f6f6f6;
   --title-color: #2196f3;
-  --title-back-color: #f7f7f7;
+  --title-back-color: rgba(232, 243, 253, 0.984);
   --title-shadow-color: #0000001c;
   --button-color: white;
   --button-border-color: #1d83d6;
@@ -120,7 +120,7 @@ body {
   font-weight: bold;
 }
 #stats div span:last-child {
-  opacity: 0.8;
+  opacity: 0.9;
   font-size: var(--font-stats-values-size);
   font-weight: bold;
 }
@@ -196,7 +196,7 @@ body {
 }
 .button {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
