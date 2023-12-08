@@ -156,7 +156,7 @@ const formatTime = (time) => {
 // Reset and start game
 const startGame = (fromInit) => {
   // remove auto-solved class from body
-  document.body.classList.add('auto-solved');
+  document.body.classList.remove('auto-solved');
   // Setup variables
   const emptyStats = { moves: 0, resolvedAt: 0, errors: 0, time: Date.now() };
   let current = {};
