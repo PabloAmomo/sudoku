@@ -27,7 +27,7 @@ const clickOnNumber = (number) => {
   // Check if number is correct
   if (GAME_STATE.board[el.dataset.row][el.dataset.col].value == numberUse) {
     el.classList.remove('error');
-    if (checkState()) GAME_STATE.level++;
+    if (isSolved()) GAME_STATE.level++;
   } else {
     GAME_STATE.errors++;
     el.classList.add('error');
@@ -132,7 +132,7 @@ const fillBoard = () => {
 };
 
 // Verify if game is finished (No error and no empty cells)
-const checkState = () =>
+const isSolved = () =>
   (document.querySelectorAll('.square .cell.error')?.length ?? 999) + (document.querySelectorAll('.square .cell.empty')?.length ?? 999) == 0;
 
 // Solve game (Replace user values with the correct values)
@@ -140,6 +140,7 @@ const solveGame = () => {
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) if (GAME_STATE.board[i][j].user == 0) GAME_STATE.board[i][j].user = GAME_STATE.board[i][j].value;
   }
+  document.body.classList.add('auto-solved');
   fillBoard();
 };
 
@@ -154,6 +155,9 @@ const formatTime = (time) => {
 
 // Reset and start game
 const startGame = (fromInit) => {
+  // remove auto-solved class from body
+  document.body.classList.add('auto-solved');
+  // Setup variables
   const emptyStats = { moves: 0, resolvedAt: 0, errors: 0, time: Date.now() };
   let current = {};
   // Recover game state
@@ -167,7 +171,7 @@ const startGame = (fromInit) => {
 
 // Update stats
 const updateStats = () => {
-  const solved = checkState();
+  const solved = isSolved();
   // Set solved or not
   if (solved) {
     document.body.classList.add('solved');
@@ -187,22 +191,21 @@ const updateStats = () => {
 const init = () => {
   // Set mobile class to body
   if (isMobile()) document.body.classList.add('mobile');
-  // Add numbers
+  // Add numbers and buttons events
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', EMPTY].forEach((number) => {
     const button = createDiv(['button-number'], { selector: number }, number == EMPTY ? '-' : number);
     document.querySelector('#number-selector').append(button);
+    button.addEventListener('click', () => !isSolved() && clickOnNumber(button.dataset.selector));
   });
-  // New game
+  // button: New game
   document.querySelector('#new-game').addEventListener('click', () => {
     GAME_STATE.board = [];
     localStorage.setItem('gameState', JSON.stringify(GAME_STATE));
     updateStats();
     startGame();
   });
-  // Solve game
+  // button: Solve game
   document.querySelector('#solve').addEventListener('click', () => solveGame());
-  // Select number event
-  document.querySelectorAll('.button-number').forEach((button) => button.addEventListener('click', () => clickOnNumber(button.dataset.selector)));
   // Add squares (By template)
   let count = -1;
   document.querySelectorAll('#board .row').forEach((row) => {
@@ -219,12 +222,12 @@ const init = () => {
         cell.dataset.col = -(cell.dataset.row * 9) + rowStart + i + [0, -1, -2][i] + i * 3 + Math.floor(j / 3) * 9 + (j - Math.floor(j / 3) * 3);
         // Add cell to square
         square.append(cell);
+        // Add click event
+        cell.addEventListener('click', (evt) => !isSolved() && clickOnCell(evt.target))
       }
       row.append(square); // Add square to row
     }
   });
-  // Select item event
-  document.querySelectorAll('.square .cell').forEach((item) => item.addEventListener('click', (evt) => clickOnCell(evt.target)));
   // Start game
   startGame(true);
   // Update stats
