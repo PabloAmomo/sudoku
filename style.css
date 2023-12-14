@@ -127,6 +127,9 @@ body {
   font-size: var(--font-stats-values-size);
   font-weight: bold;
 }
+#errors {
+  color: var(--color-error);
+}
 /* board */
 #board {
   max-height: var(--max-pixels);
